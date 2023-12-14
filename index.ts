@@ -1,6 +1,8 @@
 import { Client, GatewayIntentBits } from "discord.js";
 import { Bot } from "./structs/Bot";
+import alive from "./alive";
 
+alive
 export const bot = new Bot(
   new Client({
     intents: [
