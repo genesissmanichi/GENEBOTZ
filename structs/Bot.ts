@@ -27,7 +27,7 @@ export class Bot {
   public queues = new Collection<Snowflake, MusicQueue>();
 
   public constructor(public readonly client: Client) {
-    this.client.login(config.TOKEN);
+    this.client.login(process.env.TOKEN);
 
     this.client.on("ready", () => {
       console.log(`${this.client.user!.username} ready!`);
@@ -42,7 +42,7 @@ export class Bot {
   }
 
   private async registerSlashCommands() {
-    const rest = new REST({ version: "9" }).setToken(config.TOKEN);
+    const rest = new REST({ version: "9" }).setToken(process.env.TOKEN);
 
     const commandFiles = readdirSync(join(__dirname, "..", "commands")).filter((file) => !file.endsWith(".map"));
 
